@@ -1,0 +1,69 @@
+@TodoApi_HostAddress = http://localhost:5295
+
+### Get all todos
+GET {{TodoApi_HostAddress}}/api/todos
+Accept: application/json
+
+### Search todos by title or description
+GET {{TodoApi_HostAddress}}/api/todos?search=demo
+Accept: application/json
+
+### Filter todos by category and priority
+GET {{TodoApi_HostAddress}}/api/todos?category=Work&priority=High
+Accept: application/json
+
+### Get a todo by id
+GET {{TodoApi_HostAddress}}/api/todos/1
+Accept: application/json
+
+### Create a todo
+POST {{TodoApi_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Prepare Decisions demo",
+  "description": "Slides and API walkthrough",
+  "priority": "High",
+  "category": "Work"
+}
+
+### Update a todo
+PUT {{TodoApi_HostAddress}}/api/todos/1
+Content-Type: application/json
+
+{
+  "title": "Prepare Decisions demo",
+  "description": "Slides and API walkthrough",
+  "isCompleted": true,
+  "priority": "High",
+  "category": "Work"
+}
+
+### Delete a todo
+DELETE {{TodoApi_HostAddress}}/api/todos/1
+
+### Get a todo that does not exist (404)
+GET {{TodoApi_HostAddress}}/api/todos/999999
+Accept: application/json
+
+### Create a todo with missing fields (400)
+POST {{TodoApi_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "description": "No title, priority or category"
+}
+
+### Create a todo with an invalid priority (400)
+POST {{TodoApi_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Invalid priority",
+  "priority": "Urgent",
+  "category": "Work"
+}
+
+### Filter with an invalid category (400)
+GET {{TodoApi_HostAddress}}/api/todos?category=Shopping
+Accept: application/json

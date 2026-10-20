@@ -1,0 +1,28 @@
+# .NET build files
+bin/
+obj/
+.vs/
+
+# React generated files
+frontend/node_modules/
+frontend/dist/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Database files
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Local secrets and user settings
+secrets.json
+appsettings.Local.json
+appsettings.*.json
+!appsettings.json
+
+# IDE files
+.vscode/
